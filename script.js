@@ -1,50 +1,36 @@
-/* let variable = 10 //kezdőértéket adunk a változónak
-variable = 20 //felülírhatjuk az értékét
-
-const variable2 = 50 
-variable2 = 100 //így nem lehet felülírni a const változó értékét - hibára fog futni
-
-let array = [1, 2, 3]
-
-array = [4, 5, 6]
-array.push(10)
-array22[0] = 11
-
-const array2 = [10, 20, 30]
-array2 = [40, 50, 60] //így nem lehet megváltoztatni a const array értékét
-array2.push(100) //ez működni fog, metódusokat le tudom futtatni, csak az = - lel való új értékadás nem fog menni, ha const -tal definiáljuk az arrayt eredetileg
-
-console.log(array) */
-
-const arr = ["kiss béla", "nagy józsi", "tóth jános"]
-
-for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i])
+let obj = {
+    key1: "value",
+    key2: 100,
+    key3: true,
+    key4: ["one", "two", "three"],
+    key5: {
+        nestedKey1: "nested value",
+        nestedKey2: 200,
+        nestedKey3: false,
+        nestedKey4: ["ein", "zwei", "drei"],
+        nestedKey5: { nestedKey: "hello"}
+    }
 }
 
-//ha forEachet használunk, nincs szükség indexelésre - szemben a for loop-pal
+//objecteken nem szoktunk végig iterálni - közvetlenül kiíratjuk az objectet vagy annak egy kulcsát - bárhol van a kulcs, meg fogja találni a js
+/* console.log(obj.key2)
+console.log(obj["key2"])
 
-let lettersLength = 0
-arr.forEach((element, index) => {
-    console.log("at index: ", index, "is: ", element)
-    console.log(`at index: ${index + 1} is: ${element}`)
-    lettersLength += element.length
-})
-console.log(lettersLength)
-//ha kimentem egy változóba - akkor a forEach függvénynek nem kell elkérni a visszatérési értékét, mert nincs
-
-let mapResult = arr.map((element, index) => {
-    console.log(`at index: ${index + 1} is: ${element}`)
-    return element.length
-})
-console.log(mapResult)
-//ha ezt mentem ki egy változóba, akkor ő elvégzi a callback függvényt ugyanúgy, mint a forEach, de ő minden esetben vár egy visszatérési értéket
-
-for (const element of arr) {
-    console.log(`forof: ${element}`)
+for (let i = 0; i< obj.key4.length; i++) {
+    console.log(obj.key4[i])
 }
-//ez egy olyan for loop, amiben nincsenek indexek
- 
-for (let i = 0; i < arr[0].length; i++) {
-    console.log(arr[0][i])
-}
+
+obj.key4.map((value) => {
+    console.log(value)
+}) */
+
+console.log(obj.key5.nestedKey4[1])
+console.log(obj.key5.nestedKey5.nestedKey)
+
+//végig tudok ezzel iterálni a teljes tömbön és kiloggolni az összes keyt, ami az obj-en belül van:
+console.log(Object.keys[obj]) 
+
+const objectKeys = Object.keys(obj)
+objectKeys.forEach((key) => {
+    console.log(key, obj[key])
+});
